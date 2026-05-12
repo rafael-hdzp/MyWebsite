@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NYC May 21–26 Itinerary Map</title>
+  <title>NYC May 21-26 Optimized Itinerary Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
     body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background:#f7f7f7; }
     header { padding: 18px 22px; background:#111827; color:white; }
     header h1 { margin:0; font-size:22px; }
     header p { margin:6px 0 0; opacity:.88; font-size:14px; }
-    #container { display:grid; grid-template-columns: 350px 1fr; height: calc(100vh - 78px); }
+    #container { display:grid; grid-template-columns: 390px 1fr; height: calc(100vh - 78px); }
     #sidebar { overflow:auto; padding:16px; background:white; border-right:1px solid #ddd; }
     #map { height:100%; width:100%; }
     .card { border:1px solid #ddd; border-radius:12px; padding:12px; margin-bottom:12px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.06); }
@@ -22,7 +22,8 @@
     button { width:100%; border:0; border-radius:10px; padding:10px; margin:5px 0; cursor:pointer; font-weight:600; background:#f3f4f6; }
     button:hover { background:#e5e7eb; }
     .note { background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:12px; margin-bottom:12px; font-size:13px; line-height:1.35; }
-    @media (max-width: 800px) {
+    .small { font-size:12px; color:#666; margin-top:10px; line-height:1.35; }
+    @media (max-width: 850px) {
       #container { grid-template-columns: 1fr; grid-template-rows: 45vh 55vh; height:auto; }
       #sidebar { order:2; height:55vh; }
       #map { order:1; height:45vh; }
@@ -31,31 +32,34 @@
 </head>
 <body>
 <header>
-  <h1>NYC May 21–26 Itinerary Map</h1>
-  <p>Hotel bases + day-by-day visiting spots for Manhattan and Brooklyn.</p>
+  <h1>NYC May 21-26 Optimized Itinerary Map</h1>
+  <p>Updated with Hyatt Place Chelsea, Death Becomes Her, Julius’, Metropolitan, Twin Tails, and SUMMIT at 6:30 PM.</p>
 </header>
 
 <div id="container">
   <aside id="sidebar">
     <div class="note">
-      <strong>Recommendation:</strong> stay in Union Square / Flatiron / NoMad for the lowest overall commuting time.
-      East Village / Lower East Side is better if nightlife and walking home from bars matter most.
+      <strong>Latest optimization:</strong> Julius’ is now a Saturday afternoon beer + fries stop in the West Village.
+      Metropolitan is placed on Sunday night after your Brooklyn day. SUMMIT One Vanderbilt is locked for Monday at 6:30 PM with terrace cocktail.
     </div>
     <button onclick="showAll()">Show all</button>
-    <button onclick="fitStay()">Focus stay options</button>
+    <button onclick="focusHotel()">Focus hotel area</button>
     <button onclick="fitManhattan()">Focus Manhattan core</button>
     <button onclick="fitBrooklyn()">Focus Brooklyn</button>
+    <button onclick="fitAirport()">Focus JFK route context</button>
     <div class="legend" id="legend"></div>
     <div id="cards"></div>
+    <div class="small">Tip: use the layer control on the map to turn individual days on/off. Route lines are approximate and meant for planning, not navigation.</div>
   </aside>
   <main id="map"></main>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const spots = [{"name": "Union Square / Flatiron / NoMad", "lat": 40.737, "lng": -73.9903, "type": "Stay option", "day": "Stay bases", "notes": "Best overall base: central for uptown, downtown, Brooklyn, and nightlife."}, {"name": "Lower East Side / East Village", "lat": 40.7223, "lng": -73.9886, "type": "Stay option", "day": "Stay bases", "notes": "Most fun base: close to East Village gay bars, Katz, Chinatown, Soho."}, {"name": "Brooklyn Heights", "lat": 40.696, "lng": -73.9958, "type": "Brooklyn stay option", "day": "Stay bases", "notes": "Best Brooklyn alternative: scenic and easy Manhattan access."}, {"name": "Williamsburg", "lat": 40.7081, "lng": -73.9571, "type": "Brooklyn stay option", "day": "Stay bases", "notes": "Good if your sister is nearby and you want a Brooklyn nightlife/food base."}, {"name": "Penn Station", "lat": 40.7506, "lng": -73.9935, "type": "Arrival", "day": "Day 1 · Wed May 21", "notes": "Arrive around 4 PM."}, {"name": "Flatiron Building / Madison Square Park", "lat": 40.7411, "lng": -73.9897, "type": "Sight", "day": "Day 1 · Wed May 21", "notes": "Easy first NYC walk after arrival."}, {"name": "The Strand Book Store", "lat": 40.7333, "lng": -73.9909, "type": "Bookstore", "day": "Day 1 · Wed May 21", "notes": "Optional if energy allows."}, {"name": "Central Park", "lat": 40.7812, "lng": -73.9665, "type": "Park", "day": "Day 2 · Thu May 22", "notes": "Walk Bethesda Terrace, Bow Bridge, Strawberry Fields."}, {"name": "MoMA", "lat": 40.7614, "lng": -73.9776, "type": "Museum", "day": "Day 2 · Thu May 22", "notes": "Main museum stop."}, {"name": "Broadway / Theater District", "lat": 40.759, "lng": -73.9845, "type": "Show", "day": "Day 2 · Thu May 22", "notes": "Book show in advance."}, {"name": "The High Line", "lat": 40.748, "lng": -74.0048, "type": "Walk", "day": "Day 3 · Fri May 23", "notes": "Start around Hudson Yards or Chelsea and walk south."}, {"name": "Chelsea Market", "lat": 40.7424, "lng": -74.0061, "type": "Food / Market", "day": "Day 3 · Fri May 23", "notes": "Lunch stop after High Line."}, {"name": "West Village", "lat": 40.7358, "lng": -74.0036, "type": "Neighborhood", "day": "Day 3 · Fri May 23", "notes": "Afternoon wandering, cafés, brownstones."}, {"name": "Chinatown dinner area", "lat": 40.7158, "lng": -73.997, "type": "Food", "day": "Day 3 · Fri May 23", "notes": "Nom Wah / Joe’s Shanghai / Great NY Noodletown area."}, {"name": "Phoenix Bar", "lat": 40.7257, "lng": -73.9838, "type": "Gay bar", "day": "Day 3 · Fri May 23", "notes": "East Village gay bar crawl."}, {"name": "Club Cumming", "lat": 40.7287, "lng": -73.9846, "type": "Gay bar", "day": "Day 3 · Fri May 23", "notes": "Queer/artsy East Village night."}, {"name": "The Boiler Room", "lat": 40.7258, "lng": -73.9849, "type": "Gay bar", "day": "Day 3 · Fri May 23", "notes": "Dive-bar energy."}, {"name": "Lips Drag Brunch", "lat": 40.742, "lng": -73.9822, "type": "Drag brunch", "day": "Day 4 · Sat May 24", "notes": "Reserve for Saturday late morning."}, {"name": "Greenpoint", "lat": 40.7306, "lng": -73.954, "type": "Brooklyn neighborhood", "day": "Day 4 · Sat May 24", "notes": "Relaxed Brooklyn option with your sister."}, {"name": "Brooklyn Heights Promenade", "lat": 40.6981, "lng": -73.9967, "type": "Viewpoint", "day": "Day 4 · Sat May 24", "notes": "Great sunset skyline."}, {"name": "Guggenheim Museum", "lat": 40.783, "lng": -73.959, "type": "Museum", "day": "Day 5 · Sun May 25", "notes": "Optional; go if exhibit appeals."}, {"name": "SUMMIT One Vanderbilt", "lat": 40.7527, "lng": -73.9787, "type": "Observation deck", "day": "Day 5 · Sun May 25", "notes": "Book around golden hour."}, {"name": "Twin Tails", "lat": 40.7624, "lng": -73.972, "type": "Restaurant", "day": "Day 5 · Sun May 25", "notes": "Dinner reservation."}, {"name": "DUMBO", "lat": 40.7033, "lng": -73.9881, "type": "Brooklyn sight", "day": "Day 6 · Mon May 26", "notes": "Morning waterfront walk/photo spot."}, {"name": "Brooklyn Bridge", "lat": 40.7061, "lng": -73.9969, "type": "Walk / bike", "day": "Day 6 · Mon May 26", "notes": "Walk Brooklyn → Manhattan for skyline views. Bike nearby waterfront instead of bridge if crowded."}, {"name": "Katz’s Delicatessen", "lat": 40.7223, "lng": -73.9874, "type": "Food", "day": "Day 6 · Mon May 26", "notes": "Pastrami lunch."}, {"name": "Museum of Sex", "lat": 40.7441, "lng": -73.9876, "type": "Museum", "day": "Day 6 · Mon May 26", "notes": "Optional if time and energy."}, {"name": "JFK Airport", "lat": 40.6413, "lng": -73.7781, "type": "Departure", "day": "Day 6 · Mon May 26", "notes": "Flight leaves 8:30 PM; leave Manhattan around 5:15–5:45 PM."}];
-const dayOrder = ["Stay bases", "Day 1 \u00b7 Wed May 21", "Day 2 \u00b7 Thu May 22", "Day 3 \u00b7 Fri May 23", "Day 4 \u00b7 Sat May 24", "Day 5 \u00b7 Sun May 25", "Day 6 \u00b7 Mon May 26"];
-const colors = {"Stay bases": "#111827", "Day 1 \u00b7 Wed May 21": "#2563eb", "Day 2 \u00b7 Thu May 22": "#7c3aed", "Day 3 \u00b7 Fri May 23": "#dc2626", "Day 4 \u00b7 Sat May 24": "#16a34a", "Day 5 \u00b7 Sun May 25": "#ea580c", "Day 6 \u00b7 Mon May 26": "#0891b2"};
+const spots = [{"name": "Hyatt Place New York / Chelsea", "lat": 40.74412, "lng": -73.99422, "type": "Hotel", "day": "Hotel base", "time": "Base", "notes": "Your hotel: 140 W 24th St. Excellent base for Chelsea, Flatiron, High Line, Penn Station, and downtown/uptown subway links."}, {"name": "Penn Station", "lat": 40.7506, "lng": -73.9935, "type": "Arrival", "day": "Day 1 · Thu May 21", "time": "4:00 PM", "notes": "Arrive around 4 PM; hotel is a short subway/taxi/walk south."}, {"name": "Hyatt Place New York / Chelsea", "lat": 40.74412, "lng": -73.99422, "type": "Hotel", "day": "Day 1 · Thu May 21", "time": "5:00 PM", "notes": "Check in / drop bags."}, {"name": "Flatiron Building / Madison Square Park", "lat": 40.7411, "lng": -73.9897, "type": "Sight", "day": "Day 1 · Thu May 21", "time": "6:00 PM", "notes": "Easy first walk from the hotel."}, {"name": "The Strand Book Store", "lat": 40.7333, "lng": -73.9909, "type": "Bookstore", "day": "Day 1 · Thu May 21", "time": "7:00 PM", "notes": "Optional first-evening stop before dinner."}, {"name": "East Village dinner/drinks", "lat": 40.727, "lng": -73.985, "type": "Neighborhood", "day": "Day 1 · Thu May 21", "time": "8:00 PM", "notes": "Keep it light after arrival: casual dinner or one drink."}, {"name": "Central Park south / Bethesda route", "lat": 40.7726, "lng": -73.9712, "type": "Park", "day": "Day 2 · Fri May 22", "time": "Morning", "notes": "Walk Bethesda Terrace, Bow Bridge, and Strawberry Fields if energy allows."}, {"name": "MoMA", "lat": 40.7614, "lng": -73.9776, "type": "Museum", "day": "Day 2 · Fri May 22", "time": "Afternoon", "notes": "Main museum stop before the Broadway evening."}, {"name": "Lunt-Fontanne Theatre · Death Becomes Her", "lat": 40.7591, "lng": -73.9866, "type": "Show", "day": "Day 2 · Fri May 22", "time": "7:00 PM", "notes": "Booked: Death Becomes Her at 7:00 PM. Arrive 20–30 minutes early."}, {"name": "Times Square / Theater District", "lat": 40.758, "lng": -73.9855, "type": "Quick sight", "day": "Day 2 · Fri May 22", "time": "After show", "notes": "See it once after the show, then leave the chaos."}, {"name": "The High Line", "lat": 40.748, "lng": -74.0048, "type": "Walk", "day": "Day 3 · Sat May 23", "time": "Morning", "notes": "Very convenient from your hotel. Start around 23rd/30th and walk south."}, {"name": "Chelsea Market", "lat": 40.7424, "lng": -74.0061, "type": "Food / Market", "day": "Day 3 · Sat May 23", "time": "Lunch", "notes": "Lunch after the High Line."}, {"name": "West Village", "lat": 40.7358, "lng": -74.0036, "type": "Neighborhood", "day": "Day 3 · Sat May 23", "time": "Afternoon", "notes": "Brownstones, cafés, wandering; low-pressure afternoon."}, {"name": "Julius’", "lat": 40.73415, "lng": -74.00076, "type": "Historic gay bar", "day": "Day 3 · Sat May 23", "time": "4:30–5:30 PM", "notes": "Best as a casual beer + fries stop while you are already in the West Village."}, {"name": "Hyatt Place New York / Chelsea", "lat": 40.74412, "lng": -73.99422, "type": "Hotel reset", "day": "Day 3 · Sat May 23", "time": "6:00 PM", "notes": "Quick reset before dinner."}, {"name": "Twin Tails", "lat": 40.7624, "lng": -73.972, "type": "Restaurant", "day": "Day 3 · Sat May 23", "time": "7:45 PM", "notes": "Booked dinner. SUMMIT is not placed here because sunset timing would be too rushed."}, {"name": "Optional East Village drink", "lat": 40.727, "lng": -73.985, "type": "Optional nightlife", "day": "Day 3 · Sat May 23", "time": "Late, optional", "notes": "Only if you still have energy after Twin Tails; otherwise keep this night relaxed."}, {"name": "Lips Drag Brunch", "lat": 40.742, "lng": -73.9822, "type": "Drag brunch", "day": "Day 4 · Sun May 24", "time": "Late morning", "notes": "Good Sunday placement; easy from your hotel by subway/taxi."}, {"name": "Williamsburg / Greenpoint", "lat": 40.7229, "lng": -73.9574, "type": "Brooklyn neighborhood", "day": "Day 4 · Sun May 24", "time": "Afternoon", "notes": "Brooklyn time with your sister: cafés, shops, relaxed neighborhood wandering."}, {"name": "DUMBO", "lat": 40.7033, "lng": -73.9881, "type": "Brooklyn sight", "day": "Day 4 · Sun May 24", "time": "Late afternoon", "notes": "Waterfront, Manhattan Bridge photo spot, Brooklyn Bridge Park."}, {"name": "Brooklyn Heights Promenade", "lat": 40.6981, "lng": -73.9967, "type": "Viewpoint", "day": "Day 4 · Sun May 24", "time": "Sunset", "notes": "Great skyline/sunset moment with your sister."}, {"name": "Metropolitan", "lat": 40.7149, "lng": -73.9553, "type": "Brooklyn gay bar", "day": "Day 4 · Sun May 24", "time": "Evening / night", "notes": "Best fit after your Brooklyn day; good Williamsburg queer-nightlife stop."}, {"name": "Guggenheim Museum", "lat": 40.783, "lng": -73.959, "type": "Museum", "day": "Day 5 · Mon May 25", "time": "Late morning", "notes": "Optional: only go if the exhibit appeals; otherwise do a slower Central Park / Upper East Side morning."}, {"name": "Central Park Reservoir / Upper East Side", "lat": 40.7851, "lng": -73.9604, "type": "Walk", "day": "Day 5 · Mon May 25", "time": "Afternoon", "notes": "Pairs well with Guggenheim. Keep the day lighter before SUMMIT."}, {"name": "Hyatt Place New York / Chelsea", "lat": 40.74412, "lng": -73.99422, "type": "Hotel reset", "day": "Day 5 · Mon May 25", "time": "Late afternoon", "notes": "Rest/change before SUMMIT."}, {"name": "SUMMIT One Vanderbilt", "lat": 40.7527, "lng": -73.9787, "type": "Observation deck", "day": "Day 5 · Mon May 25", "time": "6:30 PM booked", "notes": "Booked for 6:30 PM and includes terrace cocktail. Stay through golden hour, sunset, and night skyline."}, {"name": "Dinner near Grand Central / Koreatown / NoMad", "lat": 40.7476, "lng": -73.9864, "type": "Dinner area", "day": "Day 5 · Mon May 25", "time": "After SUMMIT", "notes": "Flexible dinner after SUMMIT; Koreatown is easy from here and close to your hotel."}, {"name": "Hyatt Place New York / Chelsea", "lat": 40.74412, "lng": -73.99422, "type": "Hotel", "day": "Day 6 · Tue May 26", "time": "Morning", "notes": "Check out and leave bags at hotel if possible."}, {"name": "Brooklyn Bridge", "lat": 40.7061, "lng": -73.9969, "type": "Walk / bike", "day": "Day 6 · Tue May 26", "time": "Morning", "notes": "Walk Brooklyn → Manhattan for skyline views. Better to bike the waterfront and walk the bridge if it’s crowded."}, {"name": "Chinatown lunch area", "lat": 40.7158, "lng": -73.997, "type": "Food", "day": "Day 6 · Tue May 26", "time": "Lunch", "notes": "Good slot for Chinatown: Nom Wah / Joe’s Shanghai / Great NY Noodletown area."}, {"name": "Katz’s Delicatessen", "lat": 40.7223, "lng": -73.9874, "type": "Food", "day": "Day 6 · Tue May 26", "time": "Optional late lunch", "notes": "Use this instead of Chinatown if pastrami is the priority, or split one sandwich as a snack."}, {"name": "Museum of Sex", "lat": 40.7441, "lng": -73.9876, "type": "Museum", "day": "Day 6 · Tue May 26", "time": "Optional afternoon", "notes": "Close to your hotel; only if you have energy before the airport."}, {"name": "JFK Airport", "lat": 40.6413, "lng": -73.7781, "type": "Departure", "day": "Day 6 · Tue May 26", "time": "8:30 PM flight", "notes": "Aim to leave the hotel around 5:15–5:45 PM depending on transit."}];
+const dayOrder = ["Hotel base", "Day 1 · Thu May 21", "Day 2 · Fri May 22", "Day 3 · Sat May 23", "Day 4 · Sun May 24", "Day 5 · Mon May 25", "Day 6 · Tue May 26"];
+const colors = {"Hotel base": "#111827", "Day 1 \u00b7 Thu May 21": "#2563eb", "Day 2 \u00b7 Fri May 22": "#7c3aed", "Day 3 \u00b7 Sat May 23": "#dc2626", "Day 4 \u00b7 Sun May 24": "#16a34a", "Day 5 \u00b7 Mon May 25": "#ea580c", "Day 6 \u00b7 Tue May 26": "#0891b2"};
+const routes = {"Day 1 \u00b7 Thu May 21": [[40.7506, -73.9935], [40.74412, -73.99422], [40.7411, -73.9897], [40.7333, -73.9909], [40.727, -73.985]], "Day 2 \u00b7 Fri May 22": [[40.7726, -73.9712], [40.7614, -73.9776], [40.7591, -73.9866], [40.758, -73.9855]], "Day 3 \u00b7 Sat May 23": [[40.748, -74.0048], [40.7424, -74.0061], [40.7358, -74.0036], [40.73415, -74.00076], [40.74412, -73.99422], [40.7624, -73.972], [40.727, -73.985]], "Day 4 \u00b7 Sun May 24": [[40.742, -73.9822], [40.7229, -73.9574], [40.7033, -73.9881], [40.6981, -73.9967], [40.7149, -73.9553]], "Day 5 \u00b7 Mon May 25": [[40.783, -73.959], [40.7851, -73.9604], [40.74412, -73.99422], [40.7527, -73.9787], [40.7476, -73.9864]], "Day 6 \u00b7 Tue May 26": [[40.74412, -73.99422], [40.7061, -73.9969], [40.7158, -73.997], [40.7223, -73.9874], [40.7441, -73.9876], [40.6413, -73.7781]]};
 
 const map = L.map('map').setView([40.735, -73.985], 12);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -65,14 +69,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const groups = {};
 const allBounds = [];
-const markers = [];
 
 function makeIcon(color) {
   return L.divIcon({
     className: '',
-    html: `<div style="background:${color}; width:16px; height:16px; border-radius:50%; border:3px solid white; box-shadow:0 1px 5px rgba(0,0,0,.45);"></div>`,
-    iconSize: [22,22],
-    iconAnchor: [11,11]
+    html: `<div style="position:relative; transform:translate(-2px,-2px);">
+      <div style="background:${color}; width:19px; height:19px; border-radius:50%; border:3px solid white; box-shadow:0 1px 5px rgba(0,0,0,.45);"></div>
+    </div>`,
+    iconSize: [25,25],
+    iconAnchor: [12,12]
   });
 }
 
@@ -82,13 +87,24 @@ dayOrder.forEach(day => {
 
 spots.forEach(s => {
   const marker = L.marker([s.lat, s.lng], { icon: makeIcon(colors[s.day]) })
-    .bindPopup(`<strong>${s.name}</strong><br><em>${s.day}</em><br>${s.type}<br><br>${s.notes}`);
+    .bindPopup(`<strong>${s.name}</strong><br><em>${s.day}</em><br><strong>${s.time}</strong> · ${s.type}<br><br>${s.notes}`);
   marker.addTo(groups[s.day]);
-  markers.push({marker, spot:s});
   allBounds.push([s.lat, s.lng]);
 });
 
-const control = L.control.layers(null, groups, {collapsed:false}).addTo(map);
+Object.keys(routes).forEach(day => {
+  if (routes[day].length > 1) {
+    const line = L.polyline(routes[day], {
+      color: colors[day],
+      weight: 3,
+      opacity: 0.45,
+      dashArray: '6,8'
+    });
+    line.addTo(groups[day]);
+  }
+});
+
+L.control.layers(null, groups, {collapsed:false}).addTo(map);
 map.fitBounds(allBounds, {padding:[30,30]});
 
 const legend = document.getElementById('legend');
@@ -101,7 +117,7 @@ cards.innerHTML = dayOrder.map(day => {
   const items = spots.filter(s => s.day === day);
   return `<div class="card">
     <h3 style="color:${colors[day]}">${day}</h3>
-    ${items.map(s => `<p><strong>${s.name}</strong> — ${s.notes}</p>`).join('<br>')}
+    ${items.map(s => `<p><strong>${s.time}</strong> · <strong>${s.name}</strong> — ${s.notes}</p>`).join('<br>')}
   </div>`;
 }).join('');
 
@@ -109,16 +125,10 @@ function showAll() {
   dayOrder.forEach(day => { if (!map.hasLayer(groups[day])) map.addLayer(groups[day]); });
   map.fitBounds(allBounds, {padding:[30,30]});
 }
-function fitStay() {
-  const pts = spots.filter(s => s.day === "Stay bases").map(s => [s.lat, s.lng]);
-  map.fitBounds(pts, {padding:[50,50]});
-}
-function fitManhattan() {
-  map.fitBounds([[40.705, -74.020], [40.790, -73.950]], {padding:[30,30]});
-}
-function fitBrooklyn() {
-  map.fitBounds([[40.690, -74.010], [40.735, -73.945]], {padding:[30,30]});
-}
+function focusHotel() { map.setView([40.74412, -73.99422], 15); }
+function fitManhattan() { map.fitBounds([[40.705, -74.020], [40.790, -73.950]], {padding:[30,30]}); }
+function fitBrooklyn() { map.fitBounds([[40.690, -74.010], [40.735, -73.945]], {padding:[30,30]}); }
+function fitAirport() { map.fitBounds([[40.63, -74.02], [40.76, -73.76]], {padding:[30,30]}); }
 </script>
 </body>
 </html>
