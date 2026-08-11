@@ -144,6 +144,8 @@
       font-size: 13px; color: var(--gray-med);
       font-style: italic; margin-bottom: 14px;
     }
+    .stem-banner { background:#eef4f9; border:1px solid #dbe6f0; border-radius:8px; padding:11px 14px; margin-bottom:14px; font-weight:700; font-size:15px; color:#1F4E79; line-height:1.4; }
+    .q-statement { font-weight:700; font-size:15px; margin-bottom:12px; color:#2b3742; line-height:1.4; }
 
     /* ── CHECKBOX / RADIO OPTIONS ─────────── */
     .options-grid {
@@ -387,13 +389,6 @@
       <h2>Asentimiento Informado</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'consent')" aria-label="Escuchar"><span>▶</span></button>
-        <div>
-          <div class="audio-label">🔊 Escucha la explicación</div>
-          <div class="audio-hint">Ponte los audífonos y dale play.</div>
-        </div>
-      </div>
 
       <div class="question">
         <div style="background: var(--teal-light); border-radius: 8px; padding: 16px; margin-bottom: 20px; font-size: 14px; line-height: 1.6;">
@@ -434,30 +429,28 @@
       <h2>MÓDULO 0 — ¿Quién eres?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'mod0')" aria-label="Escuchar"><span>▶</span></button>
-        <div>
-          <div class="audio-label">🔊 Cuéntanos quién eres</div>
-          <div class="audio-hint">Estas preguntas nos ayudan a saber con quién hablamos.</div>
-        </div>
-      </div>
 
       <div class="question">
         <div class="question-number">P0.1</div>
         <div class="question-text">¿En qué colegio estudias?</div>
-        <input type="text" class="text-input" placeholder="Nombre de tu colegio" data-field="colegio">
+        <select class="text-input" data-field="colegio">
+          <option value="" disabled selected>Selecciona tu colegio</option>
+          <option value="prospero_pinzon">COLEGIO PROSPERO PINZON (IED)</option>
+          <option value="villa_amalia">COLEGIO VILLA AMALIA (IED)</option>
+          <option value="antonia_santos">COLEGIO LICEO NACIONAL ANTONIA SANTOS (IED)</option>
+        </select>
       </div>
 
       <div class="question">
         <div class="question-number">P0.2</div>
         <div class="question-text">¿En qué grado estás este año?</div>
         <div class="question-hint">Marca solo una opción.</div>
-        <div class="options-grid cols-5" data-type="radio">
-          <label class="option-item option-radio"><input type="radio" name="grado" value="3"><span class="option-checkmark"></span>3°</label>
-          <label class="option-item option-radio"><input type="radio" name="grado" value="4"><span class="option-checkmark"></span>4°</label>
-          <label class="option-item option-radio"><input type="radio" name="grado" value="5"><span class="option-checkmark"></span>5°</label>
-          <label class="option-item option-radio"><input type="radio" name="grado" value="6"><span class="option-checkmark"></span>6°</label>
-          <label class="option-item option-radio"><input type="radio" name="grado" value="7"><span class="option-checkmark"></span>7°</label>
+        <div class="options-grid cols-2" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="grado" value="3"><span class="option-checkmark"></span>Tercero</label>
+          <label class="option-item option-radio"><input type="radio" name="grado" value="4"><span class="option-checkmark"></span>Cuarto</label>
+          <label class="option-item option-radio"><input type="radio" name="grado" value="5"><span class="option-checkmark"></span>Quinto</label>
+          <label class="option-item option-radio"><input type="radio" name="grado" value="6"><span class="option-checkmark"></span>Sexto</label>
+          <label class="option-item option-radio"><input type="radio" name="grado" value="7"><span class="option-checkmark"></span>Séptimo</label>
         </div>
       </div>
 
@@ -492,10 +485,6 @@
       <h2>MÓDULO 1 — ¿Cómo te vienes al colegio?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p1.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P1.1</div>
         <div class="question-text">¿Cómo te desplazas de tu casa al colegio normalmente?</div>
@@ -525,10 +514,6 @@
       <h2>MÓDULO 1 — ¿Cómo te vienes al colegio?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p1.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P1.2</div>
         <div class="question-text">¿Cómo te desplazas del colegio a tu casa normalmente?</div>
@@ -558,10 +543,6 @@
       <h2>MÓDULO 1 — ¿Cómo te vienes al colegio?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p1.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P1.3</div>
         <div class="question-text">Cuando te vienes al colegio, ¿quién te acompaña normalmente?</div>
@@ -573,8 +554,8 @@
           <label class="option-item"><input type="checkbox" value="hermano"><span class="option-checkmark"></span>👦 Mi hermano/a</label>
           <label class="option-item"><input type="checkbox" value="abuelo"><span class="option-checkmark"></span>👴 Mi abuelo/a</label>
           <label class="option-item"><input type="checkbox" value="familiar"><span class="option-checkmark"></span>🧑‍🧑‍🧒 Otro familiar</label>
-          <label class="option-item"><input type="checkbox" value="amigos"><span class="option-checkmark"></span>👫 Amigos o compañeros</label>
-          <label class="option-item"><input type="checkbox" value="contratada"><span class="option-checkmark"></span>🧑‍💼 Persona contratada</label>
+          <label class="option-item"><input type="checkbox" value="amigos"><span class="option-checkmark"></span>👫 Amigos o compañeros del colegio</label>
+          <label class="option-item"><input type="checkbox" value="contratada"><span class="option-checkmark"></span>🧑‍💼 Una persona contratada para acompañarme</label>
           <label class="option-item" data-otro="true"><input type="checkbox" value="otro"><span class="option-checkmark"></span>Otro</label>
           <div class="otro-input"><input type="text" placeholder="¿Quién?" data-field="acompanante_otro"></div>
         </div>
@@ -593,10 +574,6 @@
       <h2>MÓDULO 1 — ¿Cómo te vienes al colegio?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p1.4')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 4 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P1.4</div>
         <div class="question-text">¿Alguna de las personas que te acompaña tiene 18 años o más (es decir, es un adulto)?</div>
@@ -620,10 +597,6 @@
       <h2>MÓDULO 1 — ¿Cómo te vienes al colegio?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p1.5')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 5 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P1.5</div>
         <div class="question-text">Cuando vienes al colegio, ¿cómo es normalmente el recorrido?</div>
@@ -649,10 +622,6 @@
       <h2>MÓDULO 1 — ¿Cómo te vienes al colegio?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p1.6')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 6 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P1.6</div>
         <div class="question-text">En las últimas dos semanas completas de clases, ¿cuántas veces te viniste solo/a al colegio?</div>
@@ -681,10 +650,6 @@
       <h2>MÓDULO 2 — ¿Cuánto tiempo tardas?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p2.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 4</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P2.1</div>
         <div class="question-text">¿Cuánto tiempo te demoras normalmente en llegar de tu casa al colegio?</div>
@@ -710,10 +675,6 @@
       <h2>MÓDULO 2 — ¿Cuánto tiempo tardas?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p2.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 4</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P2.2</div>
         <div class="question-text">¿Cómo te viniste de tu casa al colegio hoy?</div>
@@ -742,10 +703,6 @@
       <h2>MÓDULO 2 — ¿Cuánto tiempo tardas?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p2.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 4</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P2.3</div>
         <div class="question-text">¿Hoy a qué hora saliste de tu casa?</div>
@@ -766,10 +723,6 @@
       <h2>MÓDULO 2 — ¿Cuánto tiempo tardas?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p2.4')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 4 de 4</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P2.4</div>
         <div class="question-text">¿Hoy a qué hora llegaste al colegio?</div>
@@ -788,23 +741,6 @@
   <!-- ════════════════════════════════════════════════ -->
 
   <!-- 3A intro -->
-  <div class="module-step" id="step-3A.intro" data-progress="38">
-    <div class="module-header teal">
-      <span class="mod-icon">🚶</span>
-      <h2>MÓDULO 3 — Seguridad: Caminando</h2>
-    </div>
-    <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3a.intro')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Antes de empezar</div></div>
-      </div>
-      <div class="info-box">Las próximas preguntas son sobre tu camino cuando vienes caminando. Recuerda: nadie sabrá tu nombre. Si una pregunta te incomoda, puedes saltarla.</div>
-      <div class="nav-buttons">
-        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
-        <button class="btn btn-primary" onclick="goNext()">Empezar →</button>
-      </div>
-    </div>
-  </div>
 
   <!-- P3A.1 -->
   <div class="module-step" id="step-3A.1" data-progress="40">
@@ -813,10 +749,6 @@
       <h2>MÓDULO 3A — Caminando</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3a.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 6 · Seguridad vial</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3A.1</div>
         <div class="question-text">¿Qué tan seguro/a te sientes del tráfico y los carros mientras caminas al colegio?</div>
@@ -842,10 +774,6 @@
       <h2>MÓDULO 3A — Caminando</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3a.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3A.2</div>
         <div class="question-text">¿Hay pasos peatonales (cebras) o semáforos para cruzar en tu camino?</div>
@@ -870,10 +798,6 @@
       <h2>MÓDULO 3A — Caminando</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3a.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3A.3</div>
         <div class="question-text">En los últimos 3 meses, ¿te pasó alguna de estas cosas mientras caminabas?</div>
@@ -899,24 +823,18 @@
       <h2>MÓDULO 3A — Caminando</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3a.4')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 4 de 6 · Con otras personas</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3A.4</div>
         <div class="question-text">En los últimos 3 meses, ¿te pasó alguna de estas situaciones mientras caminabas al colegio?</div>
         <div class="question-hint">Marca todas las que apliquen. Recuerda: nadie verá tu nombre.</div>
         <div class="options-grid cols-1" data-type="checkbox" data-name="personas_camina">
-          <label class="option-item"><input type="checkbox" value="siguio"><span class="option-checkmark"></span>Alguien me siguió</label>
-          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme algo</label>
+          <label class="option-item"><input type="checkbox" value="siguio"><span class="option-checkmark"></span>Alguien me siguió o me asustó</label>
+          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme</label>
           <label class="option-item"><input type="checkbox" value="insulto"><span class="option-checkmark"></span>Alguien me dijo cosas feas o me insultó</label>
-          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó y me hizo sentir mal</label>
+          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó que me hicieron sentir mal</label>
           <label class="option-item"><input type="checkbox" value="toco"><span class="option-checkmark"></span>Alguien me tocó sin que yo quisiera</label>
-          <label class="option-item"><input type="checkbox" value="mostro"><span class="option-checkmark"></span>Alguien me mostró algo (imagen, parte de su cuerpo) que me asustó o me hizo sentir mal</label>
-          <label class="option-item"><input type="checkbox" value="ofrecio"><span class="option-checkmark"></span>Alguien me ofreció o me dio algo (dulce, dinero, etc.) de forma extraña</label>
-          <label class="option-item"><input type="checkbox" value="amenaza"><span class="option-checkmark"></span>Me asustaron o amenazaron</label>
-          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no decir</label>
+          <label class="option-item"><input type="checkbox" value="ofrecio"><span class="option-checkmark"></span>Alguien me ofreció algo de forma extraña, como dulces, dinero u otra cosa</label>
+          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no responder</label>
           <label class="option-item"><input type="checkbox" value="ninguna" data-exclusive="true"><span class="option-checkmark"></span>Ninguna de las anteriores</label>
         </div>
       </div>
@@ -934,10 +852,6 @@
       <h2>MÓDULO 3A — Caminando</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3a.5')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 5 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3A.5</div>
         <div class="question-text">¿Hay partes del camino donde te da miedo pasar?</div>
@@ -961,10 +875,6 @@
       <h2>MÓDULO 3A — Caminando</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3a.6')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 6 de 6</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3A.6</div>
         <div class="question-text">¿Por qué te da miedo ese lugar?</div>
@@ -990,23 +900,6 @@
   <!-- MÓDULO 3B — Bicicleta (1 question/page)           -->
   <!-- ════════════════════════════════════════════════ -->
 
-  <div class="module-step" id="step-3B.intro" data-progress="38">
-    <div class="module-header teal">
-      <span class="mod-icon">🚲</span>
-      <h2>MÓDULO 3 — Seguridad: Bicicleta</h2>
-    </div>
-    <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.intro')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Antes de empezar</div></div>
-      </div>
-      <div class="info-box">Las próximas preguntas son sobre cuando vas en bicicleta. Recuerda: nadie sabrá tu nombre. Si una pregunta te incomoda, puedes saltarla.</div>
-      <div class="nav-buttons">
-        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
-        <button class="btn btn-primary" onclick="goNext()">Empezar →</button>
-      </div>
-    </div>
-  </div>
 
   <div class="module-step" id="step-3B.1" data-progress="40">
     <div class="module-header teal">
@@ -1014,10 +907,6 @@
       <h2>MÓDULO 3B — Bicicleta</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 7</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3B.1</div>
         <div class="question-text">¿Qué tan seguro/a te sientes del tráfico y los carros mientras vas en bicicleta?</div>
@@ -1042,10 +931,6 @@
       <h2>MÓDULO 3B — Bicicleta</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 7</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3B.2</div>
         <div class="question-text">¿Usas casco cuando vas en bicicleta al colegio?</div>
@@ -1068,10 +953,6 @@
       <h2>MÓDULO 3B — Bicicleta</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 7</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3B.3</div>
         <div class="question-text">¿Hay ciclorrutas o carriles para bicicletas en tu camino?</div>
@@ -1095,10 +976,6 @@
       <h2>MÓDULO 3B — Bicicleta</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.4')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 4 de 7</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3B.4</div>
         <div class="question-text">En los últimos 3 meses, ¿te pasó alguna de estas cosas mientras ibas en bicicleta?</div>
@@ -1123,24 +1000,18 @@
       <h2>MÓDULO 3B — Bicicleta</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.5')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 5 de 7 · Con otras personas</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3B.5</div>
         <div class="question-text">En los últimos 3 meses, ¿te pasó alguna de estas situaciones mientras ibas en bicicleta?</div>
         <div class="question-hint">Marca todas las que apliquen. Recuerda: nadie verá tu nombre.</div>
         <div class="options-grid cols-1" data-type="checkbox" data-name="personas_bici">
-          <label class="option-item"><input type="checkbox" value="siguio"><span class="option-checkmark"></span>Alguien me siguió</label>
-          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme algo</label>
+          <label class="option-item"><input type="checkbox" value="siguio"><span class="option-checkmark"></span>Alguien me siguió o me asustó</label>
+          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme</label>
           <label class="option-item"><input type="checkbox" value="insulto"><span class="option-checkmark"></span>Alguien me dijo cosas feas o me insultó</label>
-          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó y me hizo sentir mal</label>
+          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó que me hicieron sentir mal</label>
           <label class="option-item"><input type="checkbox" value="toco"><span class="option-checkmark"></span>Alguien me tocó sin que yo quisiera</label>
-          <label class="option-item"><input type="checkbox" value="mostro"><span class="option-checkmark"></span>Alguien me mostró algo (imagen, parte de su cuerpo) que me asustó o me hizo sentir mal</label>
-          <label class="option-item"><input type="checkbox" value="ofrecio"><span class="option-checkmark"></span>Alguien me ofreció o me dio algo (dulce, dinero, etc.) de forma extraña</label>
-          <label class="option-item"><input type="checkbox" value="amenaza"><span class="option-checkmark"></span>Me asustaron o amenazaron</label>
-          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no decir</label>
+          <label class="option-item"><input type="checkbox" value="ofrecio"><span class="option-checkmark"></span>Alguien me ofreció algo de forma extraña, como dulces, dinero u otra cosa</label>
+          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no responder</label>
           <label class="option-item"><input type="checkbox" value="ninguna" data-exclusive="true"><span class="option-checkmark"></span>Ninguna de las anteriores</label>
         </div>
       </div>
@@ -1157,10 +1028,6 @@
       <h2>MÓDULO 3B — Bicicleta</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.6')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 6 de 7</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3B.6</div>
         <div class="question-text">¿Hay partes del recorrido en bicicleta donde te da miedo pasar?</div>
@@ -1183,10 +1050,6 @@
       <h2>MÓDULO 3B — Bicicleta</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3b.7')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 7 de 7</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3B.7</div>
         <div class="question-text">¿Por qué te da miedo ese lugar?</div>
@@ -1212,23 +1075,6 @@
   <!-- MÓDULO 3C — Bus / Transmilenio                    -->
   <!-- ════════════════════════════════════════════════ -->
 
-  <div class="module-step" id="step-3C.intro" data-progress="38">
-    <div class="module-header teal">
-      <span class="mod-icon">🚍</span>
-      <h2>MÓDULO 3 — Seguridad: Bus o Transmilenio</h2>
-    </div>
-    <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3c.intro')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Antes de empezar</div></div>
-      </div>
-      <div class="info-box">Las próximas preguntas son sobre cuando usas bus o Transmilenio. Recuerda: nadie sabrá tu nombre.</div>
-      <div class="nav-buttons">
-        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
-        <button class="btn btn-primary" onclick="goNext()">Empezar →</button>
-      </div>
-    </div>
-  </div>
 
   <div class="module-step" id="step-3C.1" data-progress="42">
     <div class="module-header teal">
@@ -1236,10 +1082,6 @@
       <h2>MÓDULO 3C — Bus / Transmilenio</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3c.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3C.1</div>
         <div class="question-text">¿Qué tan seguro/a te sientes esperando el bus o en la estación de Transmilenio?</div>
@@ -1264,10 +1106,6 @@
       <h2>MÓDULO 3C — Bus / Transmilenio</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3c.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3C.2</div>
         <div class="question-text">¿Qué tan seguro/a te sientes dentro del bus o Transmilenio?</div>
@@ -1292,24 +1130,18 @@
       <h2>MÓDULO 3C — Bus / Transmilenio</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3c.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 3 · Con otras personas</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3C.3</div>
         <div class="question-text">En los últimos 3 meses, ¿te pasó alguna de estas situaciones en el bus, Transmilenio o en la parada?</div>
         <div class="question-hint">Marca todas las que apliquen. Recuerda: nadie verá tu nombre.</div>
         <div class="options-grid cols-1" data-type="checkbox" data-name="personas_bus">
-          <label class="option-item"><input type="checkbox" value="siguio"><span class="option-checkmark"></span>Alguien me siguió</label>
-          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme algo</label>
+          <label class="option-item"><input type="checkbox" value="siguio"><span class="option-checkmark"></span>Alguien me siguió o me asustó</label>
+          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme</label>
           <label class="option-item"><input type="checkbox" value="insulto"><span class="option-checkmark"></span>Alguien me dijo cosas feas o me insultó</label>
-          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó y me hizo sentir mal</label>
+          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó que me hicieron sentir mal</label>
           <label class="option-item"><input type="checkbox" value="toco"><span class="option-checkmark"></span>Alguien me tocó sin que yo quisiera</label>
-          <label class="option-item"><input type="checkbox" value="mostro"><span class="option-checkmark"></span>Alguien me mostró algo (imagen, parte de su cuerpo) que me asustó o me hizo sentir mal</label>
-          <label class="option-item"><input type="checkbox" value="ofrecio"><span class="option-checkmark"></span>Alguien me ofreció o me dio algo (dulce, dinero, etc.) de forma extraña</label>
-          <label class="option-item"><input type="checkbox" value="amenaza"><span class="option-checkmark"></span>Me asustaron o amenazaron</label>
-          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no decir</label>
+          <label class="option-item"><input type="checkbox" value="ofrecio"><span class="option-checkmark"></span>Alguien me ofreció algo de manera extraña, como dulces, dinero u otra cosa</label>
+          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no responder</label>
           <label class="option-item"><input type="checkbox" value="ninguna" data-exclusive="true"><span class="option-checkmark"></span>Ninguna de las anteriores</label>
         </div>
       </div>
@@ -1324,23 +1156,6 @@
   <!-- MÓDULO 3D — Ruta escolar                          -->
   <!-- ════════════════════════════════════════════════ -->
 
-  <div class="module-step" id="step-3D.intro" data-progress="38">
-    <div class="module-header teal">
-      <span class="mod-icon">🚌</span>
-      <h2>MÓDULO 3 — Seguridad: Ruta Escolar</h2>
-    </div>
-    <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3d.intro')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Antes de empezar</div></div>
-      </div>
-      <div class="info-box">Las próximas preguntas son sobre cuando vas en ruta escolar. Recuerda: nadie sabrá tu nombre.</div>
-      <div class="nav-buttons">
-        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
-        <button class="btn btn-primary" onclick="goNext()">Empezar →</button>
-      </div>
-    </div>
-  </div>
 
   <div class="module-step" id="step-3D.1" data-progress="42">
     <div class="module-header teal">
@@ -1348,10 +1163,6 @@
       <h2>MÓDULO 3D — Ruta Escolar</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3d.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3D.1</div>
         <div class="question-text">¿Qué tan seguro/a te sientes dentro de la ruta escolar?</div>
@@ -1376,10 +1187,6 @@
       <h2>MÓDULO 3D — Ruta Escolar</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3d.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3D.2</div>
         <div class="question-text">¿Viaja un adulto (monitor o acompañante) dentro de la ruta escolar además del conductor?</div>
@@ -1403,23 +1210,17 @@
       <h2>MÓDULO 3D — Ruta Escolar</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3d.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 3 · Con otras personas</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3D.3</div>
         <div class="question-text">En los últimos 3 meses, ¿te pasó alguna de estas situaciones en la ruta escolar?</div>
         <div class="question-hint">Marca todas las que apliquen. Recuerda: nadie verá tu nombre.</div>
         <div class="options-grid cols-1" data-type="checkbox" data-name="personas_ruta">
-          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme algo</label>
+          <label class="option-item"><input type="checkbox" value="robo"><span class="option-checkmark"></span>Alguien me robó o intentó robarme</label>
           <label class="option-item"><input type="checkbox" value="insulto"><span class="option-checkmark"></span>Alguien me dijo cosas feas o me insultó</label>
-          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó y me hizo sentir mal</label>
+          <label class="option-item"><input type="checkbox" value="cuerpo"><span class="option-checkmark"></span>Alguien me dijo cosas sobre mi cuerpo o me silbó que me hicieron sentir mal</label>
           <label class="option-item"><input type="checkbox" value="toco"><span class="option-checkmark"></span>Alguien me tocó sin que yo quisiera</label>
-          <label class="option-item"><input type="checkbox" value="mostro"><span class="option-checkmark"></span>Alguien me mostró algo (imagen, parte de su cuerpo) que me asustó o me hizo sentir mal</label>
           <label class="option-item"><input type="checkbox" value="excluyeron"><span class="option-checkmark"></span>Me excluyeron o ignoraron</label>
-          <label class="option-item"><input type="checkbox" value="amenaza"><span class="option-checkmark"></span>Me asustaron o amenazaron</label>
-          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no decir</label>
+          <label class="option-item"><input type="checkbox" value="prefiero-no"><span class="option-checkmark"></span>Prefiero no responder</label>
           <label class="option-item"><input type="checkbox" value="ninguna" data-exclusive="true"><span class="option-checkmark"></span>Ninguna de las anteriores</label>
         </div>
       </div>
@@ -1434,23 +1235,6 @@
   <!-- MÓDULO 3E — Carro                                 -->
   <!-- ════════════════════════════════════════════════ -->
 
-  <div class="module-step" id="step-3E.intro" data-progress="38">
-    <div class="module-header teal">
-      <span class="mod-icon">🚗</span>
-      <h2>MÓDULO 3 — Seguridad: Carro</h2>
-    </div>
-    <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3e.intro')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Antes de empezar</div></div>
-      </div>
-      <div class="info-box">Las próximas preguntas son sobre cuando vas en carro al colegio.</div>
-      <div class="nav-buttons">
-        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
-        <button class="btn btn-primary" onclick="goNext()">Empezar →</button>
-      </div>
-    </div>
-  </div>
 
   <div class="module-step" id="step-3E.1" data-progress="42">
     <div class="module-header teal">
@@ -1458,10 +1242,6 @@
       <h2>MÓDULO 3E — Carro</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3e.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3E.1</div>
         <div class="question-text">¿Qué tan seguro/a te sientes en el camino al colegio?</div>
@@ -1486,10 +1266,6 @@
       <h2>MÓDULO 3E — Carro</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3e.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3E.2</div>
         <div class="question-text">¿El conductor o conductora usa cinturón de seguridad siempre?</div>
@@ -1513,10 +1289,6 @@
       <h2>MÓDULO 3E — Carro</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3e.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3E.3</div>
         <div class="question-text">¿Tú usas cinturón de seguridad siempre?</div>
@@ -1537,23 +1309,6 @@
   <!-- MÓDULO 3F — Moto                                  -->
   <!-- ════════════════════════════════════════════════ -->
 
-  <div class="module-step" id="step-3F.intro" data-progress="38">
-    <div class="module-header teal">
-      <span class="mod-icon">🛵</span>
-      <h2>MÓDULO 3 — Seguridad: Moto</h2>
-    </div>
-    <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3f.intro')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Antes de empezar</div></div>
-      </div>
-      <div class="info-box">Las próximas preguntas son sobre cuando vas en moto al colegio.</div>
-      <div class="nav-buttons">
-        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
-        <button class="btn btn-primary" onclick="goNext()">Empezar →</button>
-      </div>
-    </div>
-  </div>
 
   <div class="module-step" id="step-3F.1" data-progress="42">
     <div class="module-header teal">
@@ -1561,10 +1316,6 @@
       <h2>MÓDULO 3F — Moto</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3f.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3F.1</div>
         <div class="question-text">¿Qué tan seguro/a te sientes en el camino al colegio?</div>
@@ -1589,10 +1340,6 @@
       <h2>MÓDULO 3F — Moto</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3f.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3F.2</div>
         <div class="question-text">¿El conductor o conductora usa casco siempre?</div>
@@ -1616,10 +1363,6 @@
       <h2>MÓDULO 3F — Moto</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p3f.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 3</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P3F.3</div>
         <div class="question-text">¿Tú usas casco siempre?</div>
@@ -1640,54 +1383,68 @@
   <!-- MÓDULO 4 — Inasistencia (Likert, kept as 1 page)  -->
   <!-- ════════════════════════════════════════════════ -->
 
-  <div class="module-step" id="step-4.1" data-progress="60">
+  <div class="module-step" id="step-4.1a" data-progress="60">
     <div class="module-header orange">
       <span class="mod-icon">📅</span>
       <h2>MÓDULO 4 — Cuando no vienes al colegio</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p4.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta única</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P4.1</div>
-        <div class="question-text">En las últimas dos semanas completas de clases, ¿cuántas veces pasó cada cosa?</div>
-        <div class="question-hint">Marca solo una opción por fila.</div>
-        <table class="likert-table">
-          <thead>
-            <tr>
-              <th>Situación</th>
-              <th>Nunca</th>
-              <th>1–2 veces</th>
-              <th>3–4 veces</th>
-              <th>5+ veces</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-row="falta_dia">
-              <td>Falté a un día completo de clases</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="falta_traer">
-              <td>Falté al colegio porque no había quien me trajera</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="llegue_tarde">
-              <td>Llegué tarde al colegio</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="stem-banner">En las últimas dos semanas de clases, ¿cuántas veces pasó lo siguiente?</div>
+        <div class="q-statement">Falté a un día completo de clases</div>
+        <div class="options-grid cols-2" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="falta_dia" value="nunca"><span class="option-checkmark"></span>Nunca</label>
+          <label class="option-item option-radio"><input type="radio" name="falta_dia" value="1-2"><span class="option-checkmark"></span>1 o 2 veces</label>
+          <label class="option-item option-radio"><input type="radio" name="falta_dia" value="3-4"><span class="option-checkmark"></span>3 o 4 veces</label>
+          <label class="option-item option-radio"><input type="radio" name="falta_dia" value="5mas"><span class="option-checkmark"></span>5 veces o más</label>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
+        <button class="btn btn-primary" onclick="goNext()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="module-step" id="step-4.1b" data-progress="62">
+    <div class="module-header orange">
+      <span class="mod-icon">📅</span>
+      <h2>MÓDULO 4 — Cuando no vienes al colegio</h2>
+    </div>
+    <div class="module-body">
+      <div class="question">
+        <div class="question-number">P4.1</div>
+        <div class="q-statement">Falté al colegio porque no había quien me trajera</div>
+        <div class="options-grid cols-2" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="falta_traer" value="nunca"><span class="option-checkmark"></span>Nunca</label>
+          <label class="option-item option-radio"><input type="radio" name="falta_traer" value="1-2"><span class="option-checkmark"></span>1 o 2 veces</label>
+          <label class="option-item option-radio"><input type="radio" name="falta_traer" value="3-4"><span class="option-checkmark"></span>3 o 4 veces</label>
+          <label class="option-item option-radio"><input type="radio" name="falta_traer" value="5mas"><span class="option-checkmark"></span>5 veces o más</label>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
+        <button class="btn btn-primary" onclick="goNext()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="module-step" id="step-4.1c" data-progress="64">
+    <div class="module-header orange">
+      <span class="mod-icon">📅</span>
+      <h2>MÓDULO 4 — Cuando no vienes al colegio</h2>
+    </div>
+    <div class="module-body">
+      <div class="question">
+        <div class="question-number">P4.1</div>
+        <div class="q-statement">Llegué tarde al colegio</div>
+        <div class="options-grid cols-2" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="llegue_tarde" value="nunca"><span class="option-checkmark"></span>Nunca</label>
+          <label class="option-item option-radio"><input type="radio" name="llegue_tarde" value="1-2"><span class="option-checkmark"></span>1 o 2 veces</label>
+          <label class="option-item option-radio"><input type="radio" name="llegue_tarde" value="3-4"><span class="option-checkmark"></span>3 o 4 veces</label>
+          <label class="option-item option-radio"><input type="radio" name="llegue_tarde" value="5mas"><span class="option-checkmark"></span>5 veces o más</label>
+        </div>
       </div>
       <div class="nav-buttons">
         <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
@@ -1706,10 +1463,6 @@
       <h2>MÓDULO 5 — Programas de Movilidad</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p5.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 5</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P5.1</div>
         <div class="question-text">¿Te gustaría unirte a recorridos en bicicleta acompañados por un adulto para ir al colegio (Al Colegio en Bici)?</div>
@@ -1732,10 +1485,6 @@
       <h2>MÓDULO 5 — Programas de Movilidad</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p5.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 5</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P5.2</div>
         <div class="question-text">¿Te gustaría unirte a recorridos en bicicleta con otros compañeros para ir al colegio (Bici Parceros)?</div>
@@ -1758,10 +1507,6 @@
       <h2>MÓDULO 5 — Programas de Movilidad</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p5.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 5</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P5.3</div>
         <div class="question-text">¿Te gustaría unirte a recorridos peatonales acompañados por un adulto para ir al colegio (Ciempiés)?</div>
@@ -1784,10 +1529,6 @@
       <h2>MÓDULO 5 — Programas de Movilidad</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p5.4')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 4 de 5</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P5.4</div>
         <div class="question-text">¿Sabes cómo acceder o participar en estos programas de movilidad escolar?</div>
@@ -1810,10 +1551,6 @@
       <h2>MÓDULO 5 — Programas de Movilidad</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p5.5')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 5 de 5</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P5.5</div>
         <div class="question-text">Si no has participado o no quieres participar en estos programas, ¿por qué?</div>
@@ -1845,10 +1582,6 @@
       <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p6.1')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 1 de 4 · En el camino</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P6.1</div>
         <div class="question-text">¿Cómo te sientes normalmente DURANTE el camino al colegio?</div>
@@ -1874,10 +1607,6 @@
       <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p6.2')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 2 de 4 · Al llegar</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P6.2</div>
         <div class="question-text">¿Cómo te sientes normalmente CUANDO LLEGAS al colegio?</div>
@@ -1897,74 +1626,23 @@
     </div>
   </div>
 
-  <div class="module-step" id="step-6.3" data-progress="92">
+  <div class="module-step" id="step-6.3a" data-progress="92">
     <div class="module-header green">
       <span class="mod-icon">⭐</span>
       <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p6.3')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 3 de 4 · Camino y llegada</div></div>
-      </div>
       <div class="question">
         <div class="question-number">P6.3</div>
-        <div class="question-text">¿Qué tan de acuerdo o en desacuerdo estás con las siguientes afirmaciones sobre tu camino y tu llegada al colegio?</div>
-        <div class="question-hint">Marca solo una opción por fila.</div>
-        <table class="likert-table">
-          <thead>
-            <tr>
-              <th>Afirmación</th>
-              <th>Totalmente<br>de acuerdo<br>😄</th>
-              <th>De<br>acuerdo<br>🙂</th>
-              <th>En<br>desacuerdo<br>😕</th>
-              <th>Totalmente<br>en desacuerdo<br>😞</th>
-              <th>No sé<br>🤷</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-row="comodo">
-              <td>Me siento cómodo/a y tranquilo/a durante el camino al colegio</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="buen_humor">
-              <td>El camino al colegio me pone de buen humor</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="energia">
-              <td>Cuando llego al colegio, me siento con energía</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="animo">
-              <td>Cuando llego al colegio, me siento con ánimo y ganas de aprender</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="acompanado">
-              <td>Me siento mejor en el colegio cuando vengo acompañado/a o con amigos/as</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="stem-banner">¿Qué tan de acuerdo o en desacuerdo estás con las siguientes afirmaciones?</div>
+        <div class="q-statement">Cuando llego al colegio, me siento con energía.</div>
+        <div class="options-grid cols-1" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="p63_energia" value="ta"><span class="option-checkmark"></span>😄 Totalmente de acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_energia" value="da"><span class="option-checkmark"></span>🙂 De acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_energia" value="ed"><span class="option-checkmark"></span>😕 En desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_energia" value="td"><span class="option-checkmark"></span>😞 Totalmente en desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_energia" value="ns"><span class="option-checkmark"></span>🤷 No sé</label>
+        </div>
       </div>
       <div class="nav-buttons">
         <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
@@ -1973,78 +1651,123 @@
     </div>
   </div>
 
-  <div class="module-step" id="step-6.4" data-progress="96">
+  <div class="module-step" id="step-6.3b" data-progress="93">
     <div class="module-header green">
       <span class="mod-icon">⭐</span>
       <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
     </div>
     <div class="module-body">
-      <div class="audio-bar">
-        <button class="play-btn" onclick="playAudio(this, 'p6.4')" aria-label="Escuchar"><span>▶</span></button>
-        <div><div class="audio-label">🔊 Pregunta 4 de 4 · En el colegio</div></div>
-      </div>
       <div class="question">
-        <div class="question-number">P6.4</div>
-        <div class="question-text">¿Qué tan de acuerdo o en desacuerdo estás con las siguientes afirmaciones sobre cómo te sientes en tu colegio?</div>
-        <div class="question-hint">Marca solo una opción por fila.</div>
-        <table class="likert-table">
-          <thead>
-            <tr>
-              <th>Afirmación</th>
-              <th>Totalmente<br>de acuerdo<br>😄</th>
-              <th>De<br>acuerdo<br>🙂</th>
-              <th>En<br>desacuerdo<br>😕</th>
-              <th>Totalmente<br>en desacuerdo<br>😞</th>
-              <th>No sé<br>🤷</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-row="gusta_venir">
-              <td>Me gusta venir al colegio</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="atencion">
-              <td>Me gusta poner atención en clase</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="actividades">
-              <td>Me gustan las actividades que hacemos en clase</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="esfuerzo">
-              <td>Me esfuerzo por aprender las cosas que nos enseñan</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-            <tr data-row="feliz">
-              <td>Me siento feliz de ser parte de este colegio</td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-              <td><span class="likert-radio" onclick="toggleLikert(this)"></span></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="question-number">P6.3</div>
+        <div class="q-statement">Cuando llego al colegio, me siento con ánimo y ganas de aprender.</div>
+        <div class="options-grid cols-1" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="p63_animo" value="ta"><span class="option-checkmark"></span>😄 Totalmente de acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_animo" value="da"><span class="option-checkmark"></span>🙂 De acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_animo" value="ed"><span class="option-checkmark"></span>😕 En desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_animo" value="td"><span class="option-checkmark"></span>😞 Totalmente en desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_animo" value="ns"><span class="option-checkmark"></span>🤷 No sé</label>
+        </div>
       </div>
       <div class="nav-buttons">
         <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
-        <button class="btn btn-primary" onclick="finishSurvey()">Enviar respuestas 🚀</button>
+        <button class="btn btn-primary" onclick="goNext()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="module-step" id="step-6.3c" data-progress="94">
+    <div class="module-header green">
+      <span class="mod-icon">⭐</span>
+      <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
+    </div>
+    <div class="module-body">
+      <div class="question">
+        <div class="question-number">P6.3</div>
+        <div class="q-statement">Me siento mejor en el colegio cuando vengo acompañado/a o con amigos/as.</div>
+        <div class="options-grid cols-1" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="p63_acomp" value="ta"><span class="option-checkmark"></span>😄 Totalmente de acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_acomp" value="da"><span class="option-checkmark"></span>🙂 De acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_acomp" value="ed"><span class="option-checkmark"></span>😕 En desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_acomp" value="td"><span class="option-checkmark"></span>😞 Totalmente en desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p63_acomp" value="ns"><span class="option-checkmark"></span>🤷 No sé</label>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
+        <button class="btn btn-primary" onclick="goNext()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="module-step" id="step-6.4a" data-progress="95">
+    <div class="module-header green">
+      <span class="mod-icon">⭐</span>
+      <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
+    </div>
+    <div class="module-body">
+      <div class="question">
+        <div class="question-number">P6.4</div>
+        <div class="stem-banner">¿Qué tan de acuerdo o en desacuerdo estás con las siguientes afirmaciones sobre cómo te sientes en tu colegio?</div>
+        <div class="q-statement">Me gusta venir al colegio.</div>
+        <div class="options-grid cols-1" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="p64_gusta" value="ta"><span class="option-checkmark"></span>😄 Totalmente de acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_gusta" value="da"><span class="option-checkmark"></span>🙂 De acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_gusta" value="ed"><span class="option-checkmark"></span>😕 En desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_gusta" value="td"><span class="option-checkmark"></span>😞 Totalmente en desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_gusta" value="ns"><span class="option-checkmark"></span>🤷 No sé</label>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
+        <button class="btn btn-primary" onclick="goNext()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="module-step" id="step-6.4b" data-progress="96">
+    <div class="module-header green">
+      <span class="mod-icon">⭐</span>
+      <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
+    </div>
+    <div class="module-body">
+      <div class="question">
+        <div class="question-number">P6.4</div>
+        <div class="q-statement">Me esfuerzo por aprender las cosas que nos enseñan.</div>
+        <div class="options-grid cols-1" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="p64_esfuerzo" value="ta"><span class="option-checkmark"></span>😄 Totalmente de acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_esfuerzo" value="da"><span class="option-checkmark"></span>🙂 De acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_esfuerzo" value="ed"><span class="option-checkmark"></span>😕 En desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_esfuerzo" value="td"><span class="option-checkmark"></span>😞 Totalmente en desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_esfuerzo" value="ns"><span class="option-checkmark"></span>🤷 No sé</label>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
+        <button class="btn btn-primary" onclick="goNext()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="module-step" id="step-6.4c" data-progress="97">
+    <div class="module-header green">
+      <span class="mod-icon">⭐</span>
+      <h2>MÓDULO 6 — ¿Cómo te sientes?</h2>
+    </div>
+    <div class="module-body">
+      <div class="question">
+        <div class="question-number">P6.4</div>
+        <div class="q-statement">Me siento feliz de ser parte de este colegio.</div>
+        <div class="options-grid cols-1" data-type="radio">
+          <label class="option-item option-radio"><input type="radio" name="p64_feliz" value="ta"><span class="option-checkmark"></span>😄 Totalmente de acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_feliz" value="da"><span class="option-checkmark"></span>🙂 De acuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_feliz" value="ed"><span class="option-checkmark"></span>😕 En desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_feliz" value="td"><span class="option-checkmark"></span>😞 Totalmente en desacuerdo</label>
+          <label class="option-item option-radio"><input type="radio" name="p64_feliz" value="ns"><span class="option-checkmark"></span>🤷 No sé</label>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← Anterior</button>
+        <button class="btn btn-primary" onclick="goNext()">Siguiente →</button>
       </div>
     </div>
   </div>
@@ -2076,34 +1799,36 @@
     'step-2.1', 'step-2.2', 'step-2.3', 'step-2.4',
     // Module 3 (one of A/B/C/D/E/F based on P1.1)
     // 3A
-    'step-3A.intro', 'step-3A.1', 'step-3A.2', 'step-3A.3', 'step-3A.4', 'step-3A.5', 'step-3A.6',
+    'step-3A.1', 'step-3A.2', 'step-3A.3', 'step-3A.4', 'step-3A.5', 'step-3A.6',
     // 3B
-    'step-3B.intro', 'step-3B.1', 'step-3B.2', 'step-3B.3', 'step-3B.4', 'step-3B.5', 'step-3B.6', 'step-3B.7',
+    'step-3B.1', 'step-3B.2', 'step-3B.3', 'step-3B.4', 'step-3B.5', 'step-3B.6', 'step-3B.7',
     // 3C
-    'step-3C.intro', 'step-3C.1', 'step-3C.2', 'step-3C.3',
+    'step-3C.1', 'step-3C.2', 'step-3C.3',
     // 3D
-    'step-3D.intro', 'step-3D.1', 'step-3D.2', 'step-3D.3',
+    'step-3D.1', 'step-3D.2', 'step-3D.3',
     // 3E
-    'step-3E.intro', 'step-3E.1', 'step-3E.2', 'step-3E.3',
+    'step-3E.1', 'step-3E.2', 'step-3E.3',
     // 3F
-    'step-3F.intro', 'step-3F.1', 'step-3F.2', 'step-3F.3',
+    'step-3F.1', 'step-3F.2', 'step-3F.3',
     // Module 4
-    'step-4.1',
+    'step-4.1a', 'step-4.1b', 'step-4.1c',
     // Module 5
     'step-5.1', 'step-5.2', 'step-5.3', 'step-5.4', 'step-5.5',
     // Module 6
-    'step-6.1', 'step-6.2', 'step-6.3', 'step-6.4'
+    'step-6.1', 'step-6.2',
+    'step-6.3a', 'step-6.3b', 'step-6.3c',
+    'step-6.4a', 'step-6.4b', 'step-6.4c'
   ];
 
   // Maps P1.1 value → list of step ids belonging to that module 3 branch
   const MOD3_BRANCH = {
-    'caminando': ['step-3A.intro','step-3A.1','step-3A.2','step-3A.3','step-3A.4','step-3A.5','step-3A.6'],
-    'bicicleta': ['step-3B.intro','step-3B.1','step-3B.2','step-3B.3','step-3B.4','step-3B.5','step-3B.6','step-3B.7'],
-    'bus':       ['step-3C.intro','step-3C.1','step-3C.2','step-3C.3'],
-    'ruta':      ['step-3D.intro','step-3D.1','step-3D.2','step-3D.3'],
-    'carro':     ['step-3E.intro','step-3E.1','step-3E.2','step-3E.3'],
-    'moto':      ['step-3F.intro','step-3F.1','step-3F.2','step-3F.3'],
-    'otro':      ['step-3E.intro','step-3E.1','step-3E.2','step-3E.3']  // fallback
+    'caminando': ['step-3A.1','step-3A.2','step-3A.3','step-3A.4','step-3A.5','step-3A.6'],
+    'bicicleta': ['step-3B.1','step-3B.2','step-3B.3','step-3B.4','step-3B.5','step-3B.6','step-3B.7'],
+    'bus':       ['step-3C.1','step-3C.2','step-3C.3'],
+    'ruta':      ['step-3D.1','step-3D.2','step-3D.3'],
+    'carro':     ['step-3E.1','step-3E.2','step-3E.3'],
+    'moto':      ['step-3F.1','step-3F.2','step-3F.3'],
+    'otro':      ['step-3E.1','step-3E.2','step-3E.3']  // fallback
   };
 
   // All step ids that belong to *any* Module 3 branch
@@ -2250,6 +1975,7 @@
       item.addEventListener('click', function(e) {
         // Don't toggle if clicking inside an otro-input text field
         if (e.target.tagName === 'INPUT' && e.target.type === 'text') return;
+        e.preventDefault();
 
         const input = item.querySelector('input');
         if (!input) return;
